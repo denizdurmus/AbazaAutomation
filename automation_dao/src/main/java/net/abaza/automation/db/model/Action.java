@@ -32,6 +32,12 @@ public class Action {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "SELECTORTYPE", nullable = true)
 	private SelectorType selectorType;
+	
+	@Column(name = "TESTCASEID", nullable = false)
+	private int testCaseId;
+	
+	@Column(name = "RUNORDER", nullable = false)
+	private int runOrder;
 
 	public Long getId() {
 		return id;
@@ -72,5 +78,20 @@ public class Action {
 	public void setSelectorType(SelectorType selectorType) {
 		this.selectorType = selectorType;
 	}
+	
+	public int getTestCaseId() {
+		return testCaseId;
+	}
 
+	public void setTestCaseId(int testCaseId) {
+		this.testCaseId = testCaseId;
+	}
+
+	public Integer getRunOrder() {
+		return runOrder;
+	}
+
+	public void setRunOrder(Integer order) {
+		this.runOrder = order;
+	}
 }

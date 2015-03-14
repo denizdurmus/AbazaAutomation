@@ -34,6 +34,7 @@ public class OutputDaoTest {
 		output.setSelectorType(sType);
 		output.setSelectorValue("formDiv");
 		output.setValue("xyz Test");
+		output.setTestCaseId(1);
 		
 		outputDao.save(output);
 		

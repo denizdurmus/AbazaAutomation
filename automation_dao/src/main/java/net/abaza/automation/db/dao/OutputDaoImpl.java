@@ -21,7 +21,7 @@ public class OutputDaoImpl implements OutputDao {
 
 	@Override
 	public List<Output> selectAll() {
-		return outputRepository.findAll();
+		return outputRepository.selectAll();
 	}
 
 }

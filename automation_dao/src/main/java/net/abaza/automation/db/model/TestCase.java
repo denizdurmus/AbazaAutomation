@@ -1,11 +1,22 @@
 package net.abaza.automation.db.model;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 
 @Entity
 @Table(name = "t_testcase")
@@ -26,7 +37,20 @@ public class TestCase {
 	
 	@Column(name = "STATUS", nullable = false)
 	private char status;
-		
+	
+	/*
+	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	@Fetch(FetchMode.JOIN)
+	@JoinTable(name = "T_ACTION", joinColumns = { @JoinColumn(name = "ID") }, 
+		inverseJoinColumns = { @JoinColumn(name = "TESTCASEID") })
+	private Set<Action> actionList;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	@Fetch(FetchMode.JOIN)
+	@JoinTable(name = "T_OUTPUT", joinColumns = { @JoinColumn(name = "ID") }, 
+		inverseJoinColumns = { @JoinColumn(name = "TESTCASEID") })
+	private Set<Output> outputList;
+	*/
 
 	public Long getId() {
 		return id;
@@ -64,7 +88,26 @@ public class TestCase {
 		return runOrder;
 	}
 
-	public void setRunOrder(Integer order) {
+	public void setRunOrder(int order) {
 		this.runOrder = order;
 	}
+	
+	
+	/*
+	public Set<Action> getActionList() {
+		return actionList;
+	}
+
+	public void setActionList(Set<Action> actionList) {
+		this.actionList = actionList;
+	}
+
+	public Set<Output> getOutputList() {
+		return outputList;
+	}
+
+	public void setOutputList(Set<Output> outputList) {
+		this.outputList = outputList;
+	}
+	*/		
 }

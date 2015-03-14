@@ -5,6 +5,7 @@ import net.abaza.automation.db.dao.ActionDao;
 import net.abaza.automation.db.model.Action;
 import net.abaza.automation.db.model.ActionType;
 import net.abaza.automation.db.model.SelectorType;
+import net.abaza.automation.db.model.TestCase;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,11 +30,15 @@ public class ActionDaoTest {
 		SelectorType sType = new SelectorType();
 		sType.setId(1L);
 		
+		TestCase testCase = new TestCase();
+		testCase.setId(1L);
+		
 		Action action = new Action();
 		action.setActionType(aType);
 		action.setSelectorType(sType);
 		action.setSelectorValue("usernameInput");
 		action.setValue("Test");
+		action.setTestCaseId(1);
 		
 		actionDao.save(action);
 		

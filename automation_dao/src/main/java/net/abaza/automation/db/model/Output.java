@@ -22,7 +22,7 @@ public class Output {
 	private String value;
 	
 	@Column(name = "SELECTORVALUE", nullable = false)
-	private String selectorValue;
+	private String selectorValue;	
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "OUTPUTTYPE", nullable = false)
@@ -31,6 +31,9 @@ public class Output {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "SELECTORTYPE", nullable = true)
 	private SelectorType selectorType;
+	
+	@Column(name = "TESTCASEID", nullable = false)
+	private int testCaseId;
 
 	public Long getId() {
 		return id;
@@ -70,5 +73,13 @@ public class Output {
 
 	public void setSelectorType(SelectorType selectorType) {
 		this.selectorType = selectorType;
+	}
+	
+	public int getTestCaseId() {
+		return testCaseId;
+	}
+
+	public void setTestCaseId(int testCaseId) {
+		this.testCaseId = testCaseId;
 	}
 }

@@ -11,7 +11,7 @@ public interface ActionRepository extends JpaRepository<Action, Long> {
 	
 	@Query("Select distinct action from Action action "
 			+ "left join fetch action.actionType aType "
-			+ "left join fetch action.selectorType sType")
+			+ "left join fetch action.selectorType sType ")
 	public List<Action> selectAll();
 
 }
