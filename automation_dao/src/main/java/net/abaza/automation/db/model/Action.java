@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "t_actiontype")
+@Table(name = "t_action")
 public class Action {
 	
 	@Id
@@ -30,7 +30,7 @@ public class Action {
 	private ActionType actionType;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "ACTIONTYPE", nullable = true)
+	@JoinColumn(name = "SELECTORTYPE", nullable = true)
 	private SelectorType selectorType;
 
 	public Long getId() {

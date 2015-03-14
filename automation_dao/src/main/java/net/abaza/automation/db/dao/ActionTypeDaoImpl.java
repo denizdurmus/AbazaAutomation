@@ -20,7 +20,7 @@ public class ActionTypeDaoImpl implements ActionTypeDao {
 	}
 
 	@Override
-	public List<ActionType> queryAll() {
+	public List<ActionType> selectAll() {
 		return actionTypeRepository.findAll();
 	}
 

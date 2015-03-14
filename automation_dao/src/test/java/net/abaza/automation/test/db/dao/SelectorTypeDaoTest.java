@@ -1,8 +1,8 @@
 package net.abaza.automation.test.db.dao;
 
 import net.abaza.automation.db.DatabaseConfig;
-import net.abaza.automation.db.dao.ActionTypeDao;
-import net.abaza.automation.db.model.ActionType;
+import net.abaza.automation.db.dao.SelectorTypeDao;
+import net.abaza.automation.db.model.SelectorType;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,28 +13,25 @@ import org.springframework.util.Assert;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {DatabaseConfig.class})
-public class ActionTypeDaoTest {
+public class SelectorTypeDaoTest {
 	
 	@Autowired
-	private ActionTypeDao actionTypeDao;
+	private SelectorTypeDao selectorTypeDao;
 	
 	@Test
 	public void insertTest() {
-		ActionType actionType = new ActionType();
+		SelectorType selectorType = new SelectorType();
 		
-		actionType.setName("Click");
-		actionType.setHasElement('1');
-		actionType.setHasInput('0');
+		selectorType.setName("Id");
 		
-		actionTypeDao.save(actionType);
+		selectorTypeDao.save(selectorType);
 		
-		Assert.notNull(actionType.getId());
+		Assert.notNull(selectorType.getId());
 	}
 	
 	
 	@Test
-	public void queryAllTest() {		
-		Assert.notEmpty(actionTypeDao.selectAll());
+	public void selectAllTest() {		
+		Assert.notEmpty(selectorTypeDao.selectAll());
 	}
-
 }
