@@ -1,11 +1,11 @@
 package net.abaza.automation.test.db.dao;
 
+import net.abaza.automation.db.AutomationDaoException;
 import net.abaza.automation.db.DatabaseConfig;
 import net.abaza.automation.db.dao.ActionDao;
 import net.abaza.automation.db.model.Action;
 import net.abaza.automation.db.model.ActionType;
 import net.abaza.automation.db.model.SelectorType;
-import net.abaza.automation.db.model.TestCase;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,33 +22,33 @@ public class ActionDaoTest {
 	private ActionDao actionDao;
 	
 	@Test
-	public void insertTest() {
-		
+	public void insertTest() throws AutomationDaoException {		
 		ActionType aType = new ActionType();
 		aType.setId(1L);
 		
 		SelectorType sType = new SelectorType();
 		sType.setId(1L);
 		
-		TestCase testCase = new TestCase();
-		testCase.setId(1L);
-		
 		Action action = new Action();
 		action.setActionType(aType);
 		action.setSelectorType(sType);
 		action.setSelectorValue("usernameInput");
 		action.setValue("Test");
-		action.setTestCaseId(1);
+		action.setTestCaseId(0);
 		
 		actionDao.save(action);
 		
 		Assert.notNull(action.getId());
 	}
 	
+	@Test
+	public void selectAllTest() throws AutomationDaoException {		
+		Assert.notEmpty(actionDao.selectAll());
+	}
 	
 	@Test
-	public void selectAllTest() {		
-		Assert.notEmpty(actionDao.selectAll());
+	public void selectByTestcaseIdTest() throws AutomationDaoException {
+		Assert.notEmpty(actionDao.selectByTestCaseId(1));
 	}
 
 }

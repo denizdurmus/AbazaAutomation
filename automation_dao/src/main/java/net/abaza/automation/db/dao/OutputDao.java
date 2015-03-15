@@ -2,11 +2,13 @@ package net.abaza.automation.db.dao;
 
 import java.util.List;
 
+import net.abaza.automation.db.AutomationDaoException;
 import net.abaza.automation.db.model.Output;
 
 public interface OutputDao {
 	
-	public Output save(Output output);
-	public List<Output> selectAll();
+	public Output save(Output output) throws AutomationDaoException;
+	public List<Output> selectAll() throws AutomationDaoException;
+	public List<Output> selectByTestCaseId(long testcaseId) throws AutomationDaoException;
 
 }

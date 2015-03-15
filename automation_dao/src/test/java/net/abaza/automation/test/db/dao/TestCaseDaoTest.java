@@ -1,5 +1,6 @@
 package net.abaza.automation.test.db.dao;
 
+import net.abaza.automation.db.AutomationDaoException;
 import net.abaza.automation.db.DatabaseConfig;
 import net.abaza.automation.db.dao.TestCaseDao;
 import net.abaza.automation.db.model.TestCase;
@@ -18,7 +19,7 @@ public class TestCaseDaoTest {
 	private TestCaseDao testCaseDao;
 	
 	@Test
-	public void insertTest() {
+	public void insertTest() throws AutomationDaoException {
 		TestCase testCase = new TestCase();
 		
 		testCase.setName("testTestCase");
@@ -32,7 +33,7 @@ public class TestCaseDaoTest {
 	
 	
 	@Test
-	public void selectAllTest() {		
+	public void selectAllTest() throws AutomationDaoException {		
 		Assert.notEmpty(testCaseDao.selectAll());
 	}
 	

@@ -2,6 +2,7 @@ package net.abaza.automation.db.dao;
 
 import java.util.List;
 
+import net.abaza.automation.db.AutomationDaoException;
 import net.abaza.automation.db.model.TestCase;
 import net.abaza.automation.db.repository.TestCaseRepository;
 
@@ -13,15 +14,23 @@ public class TestCaseDaoImpl implements TestCaseDao {
 
 	@Autowired
 	private TestCaseRepository testCaseRepository;
-	
+
 	@Override
-	public TestCase save(TestCase testCase) {
-		return testCaseRepository.save(testCase);
+	public TestCase save(TestCase testCase) throws AutomationDaoException {
+		try {
+			return testCaseRepository.save(testCase);
+		} catch (Exception e) {
+			throw new AutomationDaoException(e);
+		}
 	}
 
 	@Override
-	public List<TestCase> selectAll() {
-		return testCaseRepository.findAll();
+	public List<TestCase> selectAll() throws AutomationDaoException {
+		try {
+			return testCaseRepository.findAll();
+		} catch (Exception e) {
+			throw new AutomationDaoException(e);
+		}
 	}
 
 }

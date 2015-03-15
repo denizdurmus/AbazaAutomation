@@ -30,10 +30,9 @@ public class TestCase {
 	
 	/*
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
-	@Fetch(FetchMode.JOIN)
 	@JoinTable(name = "T_ACTION", joinColumns = { @JoinColumn(name = "ID") }, 
 		inverseJoinColumns = { @JoinColumn(name = "TESTCASEID") })
-	private Set<Action> actionList;
+	private Set<Action> actionList;	
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@Fetch(FetchMode.JOIN)
@@ -46,7 +45,7 @@ public class TestCase {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -80,8 +79,7 @@ public class TestCase {
 
 	public void setRunOrder(int order) {
 		this.runOrder = order;
-	}
-	
+	}	
 	
 	/*
 	public Set<Action> getActionList() {
@@ -91,7 +89,8 @@ public class TestCase {
 	public void setActionList(Set<Action> actionList) {
 		this.actionList = actionList;
 	}
-
+	
+	
 	public Set<Output> getOutputList() {
 		return outputList;
 	}

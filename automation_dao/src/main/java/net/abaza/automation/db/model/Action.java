@@ -43,7 +43,7 @@ public class Action {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -91,7 +91,7 @@ public class Action {
 		return runOrder;
 	}
 
-	public void setRunOrder(Integer order) {
+	public void setRunOrder(int order) {
 		this.runOrder = order;
 	}
 }

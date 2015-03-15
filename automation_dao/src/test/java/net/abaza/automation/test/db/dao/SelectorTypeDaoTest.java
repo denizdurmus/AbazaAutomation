@@ -1,5 +1,6 @@
 package net.abaza.automation.test.db.dao;
 
+import net.abaza.automation.db.AutomationDaoException;
 import net.abaza.automation.db.DatabaseConfig;
 import net.abaza.automation.db.dao.SelectorTypeDao;
 import net.abaza.automation.db.model.SelectorType;
@@ -19,7 +20,7 @@ public class SelectorTypeDaoTest {
 	private SelectorTypeDao selectorTypeDao;
 	
 	@Test
-	public void insertTest() {
+	public void insertTest() throws AutomationDaoException {
 		SelectorType selectorType = new SelectorType();
 		
 		selectorType.setName("Id");
@@ -31,7 +32,7 @@ public class SelectorTypeDaoTest {
 	
 	
 	@Test
-	public void selectAllTest() {		
+	public void selectAllTest() throws AutomationDaoException {		
 		Assert.notEmpty(selectorTypeDao.selectAll());
 	}
 }

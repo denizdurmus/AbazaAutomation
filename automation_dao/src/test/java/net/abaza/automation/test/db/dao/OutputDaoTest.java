@@ -1,5 +1,6 @@
 package net.abaza.automation.test.db.dao;
 
+import net.abaza.automation.db.AutomationDaoException;
 import net.abaza.automation.db.DatabaseConfig;
 import net.abaza.automation.db.dao.OutputDao;
 import net.abaza.automation.db.model.Output;
@@ -21,7 +22,7 @@ public class OutputDaoTest {
 	private OutputDao outputDao;
 	
 	@Test
-	public void insertTest() {
+	public void insertTest() throws AutomationDaoException {
 		Output output = new Output();
 		
 		OutputType oType = new OutputType();
@@ -43,8 +44,13 @@ public class OutputDaoTest {
 	
 	
 	@Test
-	public void selectAllTest() {		
+	public void selectAllTest() throws AutomationDaoException {		
 		Assert.notEmpty(outputDao.selectAll());
+	}
+	
+	@Test
+	public void selectByTestCaseIdTest() throws AutomationDaoException {
+		Assert.notEmpty(outputDao.selectByTestCaseId(1));
 	}
 
 }

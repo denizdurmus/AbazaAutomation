@@ -1,5 +1,6 @@
 package net.abaza.automation.test.db.dao;
 
+import net.abaza.automation.db.AutomationDaoException;
 import net.abaza.automation.db.DatabaseConfig;
 import net.abaza.automation.db.dao.ActionTypeDao;
 import net.abaza.automation.db.model.ActionType;
@@ -19,7 +20,7 @@ public class ActionTypeDaoTest {
 	private ActionTypeDao actionTypeDao;
 	
 	@Test
-	public void insertTest() {
+	public void insertTest() throws AutomationDaoException {
 		ActionType actionType = new ActionType();
 		
 		actionType.setName("Click");
@@ -33,7 +34,7 @@ public class ActionTypeDaoTest {
 	
 	
 	@Test
-	public void queryAllTest() {		
+	public void queryAllTest() throws AutomationDaoException {		
 		Assert.notEmpty(actionTypeDao.selectAll());
 	}
 
