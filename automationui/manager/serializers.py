@@ -24,7 +24,7 @@ class TestCaseSerializer(serializers.HyperlinkedModelSerializer):
 class TestCaseStepSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = TestCaseStep
-        fields = ('id', 'name', 'description', 'testCaseId', 'runOrder', 'status')
+        fields = ('id', 'name', 'description', 'testCase', 'runOrder', 'status')
 
 class ActionSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
