@@ -1,8 +1,6 @@
 var myModule = angular.module('AutomationUI',
     [
         'ngRoute',
-        'ngAnimate',
-        'ngMessages',
         'AutomationUI.Common',
         'AutomationUI.SelectorType'
     ]);
@@ -22,12 +20,6 @@ myModule.config(function($routeProvider, $httpProvider) {
             controllerAs: 'selectorType',
             requiresLogin: false
         });
-
-    // Auth0 Authentication
-    authProvider.init({
-        domain: 'angello.auth0.com',
-        clientID: 'Fq8hKAkghu45WpnqrYTc6dbvXhBUdP7l'
-    });
 
     // Loading interceptor
     $httpProvider.interceptors.push('loadingInterceptor');
