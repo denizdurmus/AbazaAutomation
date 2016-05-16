@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+
+{% load staticfiles %}
+
+<html>
+    <head>
+        <title>Abaza Automation</title>
+    </head>
+    <body ng-controller="MainController as main">
+
+        <div ng-view=""></div>
+
+        <script src="{% static 'manager/js/head.load.min.js' %}"></script>
+        <script src="{% static 'manager/js/boot.js' %}"></script>
+    </body>
+</html>

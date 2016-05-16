@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+{% load staticfiles %}
+
+<html>
+    <head>
+        <title>Selector Type</title>
+    </head>
+    <body ng-controller="MainCtrl as main" ng-class="{loading:loadingView}">
+        
+        <div ng-view=""></div>
+
+        <div class="modal"></div>
+
+        <script src="{% static 'manager/js/head.load.min.js' %}"></script>
+        <script src="{% static 'manager/js/boot.js' %}"></script>
+    </body>
+</html>

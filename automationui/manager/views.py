@@ -1,5 +1,6 @@
 from .models import SelectorType, ActionType, OutputType, TestCase, TestCaseStep, Action, Output
 from rest_framework import viewsets
+from django.views import generic
 from .serializers import SelectorTypeSerializer, ActionTypeSerializer, OutputTypeSerializer, TestCaseSerializer, TestCaseStepSerializer, ActionSerializer, OutputSerializer
 
 # Create your views here.
