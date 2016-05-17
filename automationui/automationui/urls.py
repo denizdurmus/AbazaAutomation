@@ -16,21 +16,10 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from rest_framework import routers
-from manager import views
-
-
-router = routers.DefaultRouter()
-router.register(r'selectorType', views.SelectorTypeViewSet)
-router.register(r'actionType', views.ActionTypeViewSet)
-router.register(r'outputType', views.OutputTypeViewSet)
-router.register(r'testCase', views.TestCaseViewSet)
-router.register(r'testCaseStep', views.TestCaseStepViewSet)
-router.register(r'action', views.ActionViewSet)
-router.register(r'output', views.OutputViewSet)
 
 urlpatterns = [
-    url(r'^', include(router.urls)),
     url(r'^admin/', admin.site.urls),
-    url(r'^ui/', include('manager.urls')),
+    url(r'^ui/', include('ui.urls')),
+    url(r'^api/', include('api.urls')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

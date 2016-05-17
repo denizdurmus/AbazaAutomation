@@ -8,11 +8,11 @@ var myModule = angular.module('AutomationUI',
 myModule.config(function($routeProvider, $httpProvider) {
     $routeProvider
         .when('/index', {
-            templateUrl: '/static/manager/app/common/tmpl/index.html',
+            templateUrl: '/static/ui/app/common/tmpl/index.html',
             requiresLogin: false
         })
         .when('/selectorType', {
-            templateUrl: '/static/manager/app/selectorType/tmpl/selectorType.html',
+            templateUrl: '/static/ui/app/selectorType/tmpl/selectorType.html',
             controller: 'SelectorTypeController',
             controllerAs: 'selectorType',
             requiresLogin: false
