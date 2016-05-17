@@ -6,22 +6,41 @@ var myModule = angular.module('AutomationUI',
     ]);
 
 myModule.config(function($routeProvider, $httpProvider) {
-
     $routeProvider
-        .when('/', {
-            templateUrl: 'app/selectorType/tmpl/selectorType.html',
-            controller: 'SelectorTypeController',
-            controllerAs: 'selectorType',
+        .when('/index', {
+            templateUrl: '/static/manager/app/common/tmpl/index.html',
             requiresLogin: false
         })
         .when('/selectorType', {
-            templateUrl: 'app/selectorType/tmpl/selectorType.html',
+            templateUrl: '/static/manager/app/selectorType/tmpl/selectorType.html',
             controller: 'SelectorTypeController',
             controllerAs: 'selectorType',
             requiresLogin: false
         });
 
-    // Loading interceptor
     $httpProvider.interceptors.push('loadingInterceptor');
+});
 
+myModule.factory('loadingInterceptor', function(LoadingService) {
+    var loadingInterceptor = {
+        request: function(config) {
+            LoadingService.setLoading(true);
+            return config;
+        },
+        response: function(response) {
+            LoadingService.setLoading(false);
+            return response;
+        }
+    };
+    return loadingInterceptor;
+});
+
+myModule.run(function($rootScope, LoadingService) {
+    $rootScope.$on('$routeChangeStart', function(e, curr, prev) {
+        LoadingService.setLoading(true);
+    });
+
+    $rootScope.$on('$routeChangeSuccess', function(e, curr, prev) {
+        LoadingService.setLoading(false);
+    });
 });
