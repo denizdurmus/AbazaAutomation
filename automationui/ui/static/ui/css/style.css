@@ -1,3 +1,22 @@
 .mainViewPort {
 	margin-top: 75px;
 }
+
+body.loading {
+    overflow: hidden;
+}
+
+body.loading .modal {
+    display: block;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(244, 249, 251, 0.80) url(../image/loader.gif) 50% 50% no-repeat;
+}

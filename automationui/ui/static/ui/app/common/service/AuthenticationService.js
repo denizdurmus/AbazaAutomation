@@ -1,5 +1,5 @@
 angular.module('AutomationUI.Common')
-    .service('AuthenticationService', function($http, store, $location, jwtHelper) {
+    .service('AuthenticationService', function($http, $rootScope, store, $location, jwtHelper) {
         var baseUrl = 'http://localhost:8000';
 
         function changeUser(user) {
@@ -40,10 +40,6 @@ angular.module('AutomationUI.Common')
               var token = store.get('id_token');
               if (!token || jwtHelper.isTokenExpired(token)) {
                 $location.path('/login');
-              } else {
-                var profile = store.get('profile');
-                auth.authenticate(profile, token);
-                $rootScope.$broadcast('onCurrentUserId', profile.user_id);
               }
             },
             save: function(data) {
@@ -56,20 +52,24 @@ angular.module('AutomationUI.Common')
                   .success(function(res) {
                     store.set('userToken', res.token);
                     store.set('id_token', res.token);
-                    $location.path('/index');
+                    store.set('profile', data.username);
+                    $rootScope.$broadcast('onCurrentUserId', data.username);
+                    $location.path('/');
                   })
                   .error(function() {
                     alert('Failed to signin');
                     $rootScope.error = 'Failed to signin';
                   });
             },
-            me: function(success, error) {
-                $http.get(baseUrl + '/me').success(success).error(error);
+            getCurrentUser: function () {
+                return store.get('profile');
             },
-            logout: function(success) {
-                changeUser({});
-                delete store.token;
-                success();
+            logout: function() {
+                store.remove('id_token');
+                store.remove('profile');
+                store.remove('userToken');
+                $rootScope.$broadcast('onCurrentUserId', null);
+                $location.path('/login');
             }
         };
     });

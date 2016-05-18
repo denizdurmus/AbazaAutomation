@@ -9,9 +9,9 @@ var myModule = angular.module('AutomationUI',
 
 myModule.config(function($routeProvider, $httpProvider, jwtInterceptorProvider) {
     $routeProvider
-        .when('/index', {
+        .when('/', {
             templateUrl: '/static/ui/app/common/tmpl/index.html',
-            requiresLogin: false
+            requiresLogin: true
         })
         .when('/login', {
             templateUrl: '/static/ui/app/login/tmpl/login.html',
@@ -48,12 +48,16 @@ myModule.factory('loadingInterceptor', function(LoadingService) {
     return loadingInterceptor;
 });
 
-myModule.run(function($rootScope, LoadingService) {
+myModule.run(function($rootScope, LoadingService, AuthenticationService) {
     $rootScope.$on('$routeChangeStart', function(e, curr, prev) {
         LoadingService.setLoading(true);
     });
 
     $rootScope.$on('$routeChangeSuccess', function(e, curr, prev) {
         LoadingService.setLoading(false);
+    });
+
+    $rootScope.$on('$locationChangeStart', function() {
+      AuthenticationService.authenticateUser();
     });
 });
