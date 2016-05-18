@@ -1,14 +1,22 @@
 var myModule = angular.module('AutomationUI',
     [
         'ngRoute',
+        'angular-jwt',
+        'angular-storage',
         'AutomationUI.Common',
-        'AutomationUI.SelectorType'
+        'AutomationUI.Login'
     ]);
 
-myModule.config(function($routeProvider, $httpProvider) {
+myModule.config(function($routeProvider, $httpProvider, jwtInterceptorProvider) {
     $routeProvider
         .when('/index', {
             templateUrl: '/static/ui/app/common/tmpl/index.html',
+            requiresLogin: false
+        })
+        .when('/login', {
+            templateUrl: '/static/ui/app/login/tmpl/login.html',
+            controller: 'LoginController',
+            controllerAs: 'loginCtrl',
             requiresLogin: false
         })
         .when('/selectorType', {
@@ -19,6 +27,11 @@ myModule.config(function($routeProvider, $httpProvider) {
         });
 
     $httpProvider.interceptors.push('loadingInterceptor');
+    $httpProvider.interceptors.push('jwtInterceptor');
+
+    jwtInterceptorProvider.tokenGetter = function(store) {
+      return store.get('userToken');
+    };
 });
 
 myModule.factory('loadingInterceptor', function(LoadingService) {
