@@ -1,1 +1,1 @@
-angular.module('AutomationUI.SelectorType', []);
+angular.module('AutomationUI.SelectorType', ['AutomationUI.Common']);

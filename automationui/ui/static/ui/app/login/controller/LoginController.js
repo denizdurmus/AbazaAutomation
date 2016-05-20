@@ -3,21 +3,16 @@ angular.module('AutomationUI.Login')
 
 function LoginController($rootScope, $scope, $location, store, AuthenticationService) {
     $scope.signin = function() {
+        if (!$scope.loginForm.$valid) {
+            return false;
+        }
+
         var formData = {
             username: $scope.username,
             password: $scope.password
         };
 
-        AuthenticationService.signin(formData, function(res) {
-            if (res.type == false) {
-                alert(res.data);
-            } else {
-                store.token = res.token;
-                $location.path('/index');
-            }
-        }, function() {
-            $rootScope.error = 'Failed to signin';
-        });
+        AuthenticationService.signin(formData);
     };
 
     $scope.signup = function() {
@@ -47,11 +42,6 @@ function LoginController($rootScope, $scope, $location, store, AuthenticationSer
     };
 
     $scope.logout = function() {
-        AuthenticationService.logout(function() {
-            $location.path('/login');
-        }, function() {
-            alert('Failed to logout!');
-        });
+        AuthenticationService.logout();
     };
-    $scope.token = store.token;
 }

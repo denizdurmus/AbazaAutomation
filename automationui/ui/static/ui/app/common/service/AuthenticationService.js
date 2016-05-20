@@ -1,5 +1,5 @@
 angular.module('AutomationUI.Common')
-    .service('AuthenticationService', function($http, $rootScope, store, $location, jwtHelper) {
+    .service('AuthenticationService', function($http, $rootScope, store, $location, jwtHelper, $modal) {
         var baseUrl = 'http://localhost:8000';
 
         function changeUser(user) {
@@ -57,11 +57,14 @@ angular.module('AutomationUI.Common')
                     $location.path('/');
                   })
                   .error(function() {
-                    alert('Failed to signin');
-                    $rootScope.error = 'Failed to signin';
+                        $modal({
+                            title: 'Authentication Error',
+                            content: 'Username or password is wrong.',
+                            show: true
+                        });
                   });
             },
-            getCurrentUser: function () {
+            getCurrentUser: function() {
                 return store.get('profile');
             },
             logout: function() {

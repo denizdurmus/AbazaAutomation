@@ -2,10 +2,10 @@ angular.module('AutomationUI.Common')
     .controller('MainController', MainController);
 
 function MainController($scope, $location, AuthenticationService) {
-	var main = this;
+    var main = this;
     main.currentUser = null;
 
-    $scope.$on('onCurrentUserId', function (ctx, id) {
+    $scope.$on('onCurrentUserId', function(ctx, id) {
         main.currentUser = AuthenticationService.getCurrentUser();
     });
 

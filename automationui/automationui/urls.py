@@ -19,8 +19,8 @@ from rest_framework import routers
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^ui/', include('ui.urls')),
+    url(r'^', include('ui.urls')),
     url(r'^api/', include('api.urls')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^api-token-auth/', 'jwt_auth.views.obtain_jwt_token')
+    url(r'^api-token-auth/', 'rest_framework_jwt.views.obtain_jwt_token')
 ]

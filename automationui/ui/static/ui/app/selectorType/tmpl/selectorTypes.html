@@ -1,0 +1,18 @@
+<table class="table table-hover">
+  	<thead>
+  		<tr>
+  			<td>Id</td>
+  			<td>Name</td>
+        <td>Delete</td>
+  		</tr>  		
+  	</thead>
+  	<tbody>
+  		<tr ng-repeat="selectorType in selectorTypesController.selectorTypes">
+  			<td>{{selectorType.id}}</td>
+  			<td>{{selectorType.name}}</td>
+        <td><a class="btn btn-primary btn-fab btn-raised"
+                href="javascript:void(0)"
+                ng-click="selectorTypesController.delete(selectorType.id)">Delete</a>
+  		<tr>
+  	</tbody>
+</table>
