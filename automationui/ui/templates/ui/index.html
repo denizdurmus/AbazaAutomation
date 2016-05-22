@@ -14,6 +14,8 @@
 
     <link href="{% static 'ui/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'ui/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'ui/css/ngDialog.min.css' %}" rel="stylesheet">
+    <link href="{% static 'ui/css/ngDialog-theme-default.min.css' %}" rel="stylesheet">
 
 </head>
 
@@ -65,6 +67,11 @@
 
     </div>
     <!-- /.container -->
+
+    <script type="text/ng-template" id="authorizationErrorDialog">
+        <h1>Error</h1>
+        <p>You are not authorized for this operation.</p>
+    </script>
 
     <script src="{% static 'ui/js/head.load.min.js' %}"></script>
     <script src="{% static 'ui/js/boot.js' %}"></script>

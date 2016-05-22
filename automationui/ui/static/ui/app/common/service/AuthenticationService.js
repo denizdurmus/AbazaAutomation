@@ -1,5 +1,5 @@
 angular.module('AutomationUI.Common')
-    .service('AuthenticationService', function($http, $rootScope, store, $location, jwtHelper, $modal) {
+    .service('AuthenticationService', function($http, $rootScope, store, $location, jwtHelper, ngDialog) {
         var baseUrl = 'http://localhost:8000';
 
         function changeUser(user) {
@@ -49,20 +49,16 @@ angular.module('AutomationUI.Common')
             },
             signin: function(data) {
                 $http.post(baseUrl + '/api-token-auth/', data)
-                  .success(function(res) {
+                .success(function(res) {
                     store.set('userToken', res.token);
                     store.set('id_token', res.token);
                     store.set('profile', data.username);
                     $rootScope.$broadcast('onCurrentUserId', data.username);
                     $location.path('/');
-                  })
-                  .error(function() {
-                        $modal({
-                            title: 'Authentication Error',
-                            content: 'Username or password is wrong.',
-                            show: true
-                        });
-                  });
+                })
+                .error(function() {
+                    ngDialog.open({template: 'loginErrorDialog'});    
+                });
             },
             getCurrentUser: function() {
                 return store.get('profile');

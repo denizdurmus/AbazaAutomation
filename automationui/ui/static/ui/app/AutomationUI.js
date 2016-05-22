@@ -55,12 +55,9 @@ myModule.factory('loadingInterceptor', function(LoadingService) {
 
 myModule.factory('authResponseInterceptor', function($q) {
     var authResponseInterceptor = {
-        responseError: function(response) {
+        responseError: function(response, ngDialog) {
             if (response.status === 401 || response.status === 403) {
-                ngDialog.open({
-                    template: '<p>my template</p>',
-                    plain: true
-                });
+                ngDialog.open({template: 'authorizationErrorDialog'});
             }
             return $q.reject(response);
         }

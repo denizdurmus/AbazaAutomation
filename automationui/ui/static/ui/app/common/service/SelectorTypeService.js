@@ -13,7 +13,7 @@ angular.module('AutomationUI.Common')
             };
 
             service.delete = function(selectorTypeId) {
-                return $http.delete(baseUrl + '/api/selectorType/', selectorTypeId);
+                return $http.delete(baseUrl + '/api/selectorType/' + selectorTypeId);
             };
 
         });

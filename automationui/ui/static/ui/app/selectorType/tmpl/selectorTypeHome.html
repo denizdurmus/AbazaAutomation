@@ -5,3 +5,11 @@
   ng-dialog-controller="SelectorTypeController as selectorTypeController">New Selector Type</a>
 
 <selectorTypes selectorTypes="selectorTypeController.selectorTypes"></selectorTypes>
+
+<script type="text/ng-template" id="selectorTypeDeleteConfirmDialog">
+    <h1>Confirm</h1>
+    <p>Are you sure to delete this selector type?</p>
+
+    <button type="button" class="btn btn-default" ng-click="closeThisDialog()">Cancel</button>
+    <button type="button" class="btn btn-default" ng-click="confirm()">Confirm</button>
+</script>

@@ -1,6 +1,5 @@
 angular.module('AutomationUI.SelectorType')
-    .directive('selectortypes', SelectorTypes)
-    .controller('SelectorTypesController', SelectorTypesController);
+    .directive('selectortypes', SelectorTypes);
 
 function SelectorTypes() {
     var directive = {
@@ -16,38 +15,3 @@ function SelectorTypes() {
     return directive;
 }
 
-function SelectorTypesController($scope, SelectorTypeService) {
-    var controller = this;
-
-    controller.selectorTypes = [];
-
-    activate();
-
-    function activate() {
-        SelectorTypeService.findAll().then(postsSuccessFn, postsErrorFn);
-
-        $scope.$on('selectorType.created', function(event, selectorType) {
-            controller.selectorTypes.unshift(selectorType);
-        });
-
-        $scope.$on('selectorType.created.error', function() {
-            controller.selectorTypes.shift();
-        });
-
-        function postsSuccessFn(data, status, headers, config) {
-            controller.selectorTypes = data.data.results;
-        }
-
-
-        function postsErrorFn(data, status, headers, config) {
-
-        }
-    }
-
-    controller.delete = function(selectorTypeId, $confirm) {
-        $confirm({text: 'Are you sure you want to delete?'})
-        .then(function() {
-            SelectorTypeService.delete(selectorTypeId);
-        });
-    };
-}

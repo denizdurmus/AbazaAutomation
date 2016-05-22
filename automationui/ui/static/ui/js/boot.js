@@ -20,6 +20,7 @@ head.load(
     { file: '/static/ui/app/login/controller/LoginController.js' },
     { file: '/static/ui/app/selectorType/SelectorType.js' },
     { file: '/static/ui/app/selectorType/controller/SelectorTypeController.js' },
+    { file: '/static/ui/app/selectorType/controller/SelectorTypesController.js' },
     { file: '/static/ui/app/selectorType/tmpl/SelectorTypes.js' },
     { file: '/static/ui/app/AutomationUI.js' }
 );
