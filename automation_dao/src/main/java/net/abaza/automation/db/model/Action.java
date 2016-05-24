@@ -30,11 +30,11 @@ public class Action {
 	private ActionType actionType;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "SELECTORTYPE", nullable = true)
+	@JoinColumn(name = "SELECTORTYPE", nullable = false)
 	private SelectorType selectorType;
 	
-	@Column(name = "TESTCASEID", nullable = false)
-	private int testCaseId;
+	@Column(name = "TESTCASESTEPID", nullable = false)
+	private long testCaseStepId;
 	
 	@Column(name = "RUNORDER", nullable = false)
 	private int runOrder;
@@ -79,12 +79,12 @@ public class Action {
 		this.selectorType = selectorType;
 	}
 	
-	public int getTestCaseId() {
-		return testCaseId;
+	public long getTestCaseStepId() {
+		return testCaseStepId;
 	}
 
-	public void setTestCaseId(int testCaseId) {
-		this.testCaseId = testCaseId;
+	public void setTestCaseStepId(long testCaseStepId) {
+		this.testCaseStepId = testCaseStepId;
 	}
 
 	public Integer getRunOrder() {

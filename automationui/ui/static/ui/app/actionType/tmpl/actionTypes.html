@@ -1,0 +1,44 @@
+<table class="table table-hover">
+  	<thead>
+  		<tr>
+  			<td>Id</td>
+  			<td>Name</td>
+        <td>Edit</td>
+  		</tr>  		
+  	</thead>
+  	<tbody>
+  		<tr ng-repeat="actionType in actionTypesController.actionTypes">
+  			<td>{{actionType.id}}</td>
+  			<td>{{actionType.name}}</td>
+        <td>
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default"
+              ng-click="actionTypesController.showUpdate(actionType.id)">
+              <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="btn btn-default"
+              ng-click="actionTypesController.delete(actionType.id)">
+              <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+            </button>
+          </div>
+  		<tr>
+  	</tbody>
+</table>
+
+<script type="text/ng-template" id="actionTypeDeleteConfirmDialog">
+    <h1>Confirm</h1>
+    <p>Are you sure to delete this action type?</p>
+
+    <button type="button" class="btn btn-default" ng-click="closeThisDialog()">Cancel</button>
+    <button type="button" class="btn btn-default" ng-click="confirm()">Confirm</button>
+</script>
+
+<script type="text/ng-template" id="actionTypeDeleteSuccessDialog">
+    <h1>Success</h1>
+    <p>Action Type is deleted saved.</p>
+</script>
+
+<script type="text/ng-template" id="actionTypeDeleteErrorDialog">
+    <h1>Error</h1>
+    <p>An error occured while deleting action type.</p>
+</script>

@@ -9,6 +9,6 @@ public interface OutputDao {
 	
 	public Output save(Output output) throws AutomationDaoException;
 	public List<Output> selectAll() throws AutomationDaoException;
-	public List<Output> selectByTestCaseId(long testcaseId) throws AutomationDaoException;
+	public List<Output> selectByTestCaseStepId(long testcaseId) throws AutomationDaoException;
 
 }

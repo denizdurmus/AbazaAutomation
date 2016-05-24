@@ -1,0 +1,29 @@
+<h2>Create New Action Type</h2>
+
+<form role="form" ng-submit="actionTypeController.create()" name="actionTypeCreateForm" novalidate>
+  <div class="form-group" haserrorfor="actionTypeCreateForm.typeName">
+    <label for="inputActionTypeName">Name</label>
+    
+    <input type="text" class="form-control" name="typeName"
+      id="inputActionTypeName" required 
+      ng-model="actionTypeController.actionTypeToAdd.name" />
+
+    <div ng-messages="actionTypeCreateForm.typeName.$error" showerrorfor="actionTypeCreateForm.typeName">
+      <span class="help-block" ng-message="required">Action type name is required.</span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input type="submit" class="btn btn-primary" value="Submit">
+  </div>
+</form>
+
+<script type="text/ng-template" id="actionTypeCreateSuccessDialog">
+    <h1>Success</h1>
+    <p>Action Type is succesfully saved.</p>
+</script>
+
+<script type="text/ng-template" id="actionTypeCreateErrorDialog">
+    <h1>Error</h1>
+    <p>An error occured while saving action type.</p>
+</script>

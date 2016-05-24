@@ -14,7 +14,7 @@ public class ActionType {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID")
-	private Long id;
+	private Integer id;
 	
 	@Column(name = "NAME", nullable = false)
 	private String name;
@@ -25,11 +25,11 @@ public class ActionType {
 	@Column(name = "HAS_ELEMENT", nullable = false)
 	private char hasElement;
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

@@ -12,10 +12,11 @@
 
     <title> ABAZA AUTOMATION </title>
 
-    <link href="{% static 'ui/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'ui/css/style.css' %}" rel="stylesheet">
-    <link href="{% static 'ui/css/ngDialog.min.css' %}" rel="stylesheet">
-    <link href="{% static 'ui/css/ngDialog-theme-default.min.css' %}" rel="stylesheet">
+    <link href="{% static 'ui/3rdparty/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">    
+    <link href="{% static 'ui/3rdparty/ngDialog/css/ngDialog.min.css' %}" rel="stylesheet">
+    <link href="{% static 'ui/3rdparty/ngDialog/css/ngDialog-theme-default.min.css' %}" rel="stylesheet">
+    <link href="{% static 'ui/3rdparty/datatable/css/dataTables.bootstrap.min.css' %}" rel="stylesheet">
 
 </head>
 
@@ -39,6 +40,7 @@
             <div class="collapse navbar-collapse" id="navbar-collapse-1" ng-show="main.currentUser">
                 <ul class="nav navbar-nav pull-right" ng-show="main.currentUser">
                     <li><a href="#/selectorType">Selector Types</a></li>
+                     <li><a href="#/actionType">Action Types</a></li>
                     <li><a href="#" ng-click="main.logout()">Logout</a></li>
                 </ul>
             </div>

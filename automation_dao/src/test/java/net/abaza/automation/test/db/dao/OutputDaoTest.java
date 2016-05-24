@@ -1,12 +1,5 @@
 package net.abaza.automation.test.db.dao;
 
-import net.abaza.automation.db.AutomationDaoException;
-import net.abaza.automation.db.DatabaseConfig;
-import net.abaza.automation.db.dao.OutputDao;
-import net.abaza.automation.db.model.Output;
-import net.abaza.automation.db.model.OutputType;
-import net.abaza.automation.db.model.SelectorType;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +7,15 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
+import net.abaza.automation.db.AutomationDaoException;
+import net.abaza.automation.db.dao.OutputDao;
+import net.abaza.automation.db.model.Output;
+import net.abaza.automation.db.model.OutputType;
+import net.abaza.automation.db.model.SelectorType;
+import net.abaza.automation.test.db.config.DatabaseTestConfig;
+
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {DatabaseConfig.class})
+@ContextConfiguration(classes = {DatabaseTestConfig.class})
 public class OutputDaoTest {
 	
 	@Autowired
@@ -26,16 +26,16 @@ public class OutputDaoTest {
 		Output output = new Output();
 		
 		OutputType oType = new OutputType();
-		oType.setId(1L);
+		oType.setId(1);
 		
 		SelectorType sType = new SelectorType();
-		sType.setId(1L);
+		sType.setId(1);
 		
 		output.setOutputType(oType);
 		output.setSelectorType(sType);
 		output.setSelectorValue("formDiv");
 		output.setValue("xyz Test");
-		output.setTestCaseId(1);
+		output.setTestCaseStepId(1L);
 		
 		outputDao.save(output);
 		
@@ -50,7 +50,7 @@ public class OutputDaoTest {
 	
 	@Test
 	public void selectByTestCaseIdTest() throws AutomationDaoException {
-		Assert.notEmpty(outputDao.selectByTestCaseId(1));
+		Assert.notEmpty(outputDao.selectByTestCaseStepId(1));
 	}
 
 }

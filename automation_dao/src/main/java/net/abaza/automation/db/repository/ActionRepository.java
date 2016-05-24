@@ -19,7 +19,7 @@ public interface ActionRepository extends JpaRepository<Action, Long> {
 	@Query("Select distinct action from Action action "
 			+ "left join fetch action.actionType aType "
 			+ "left join fetch action.selectorType sType "
-			+ "where action.testCaseId = :testcaseId")
-	public List<Action> selectByTestCaseId(@Param("testcaseId") long testcaseId);
+			+ "where action.testCaseStepId = :testCaseStepId")
+	public List<Action> selectByTestCaseStepId(@Param("testCaseStepId") long testcaseId);
 
 }

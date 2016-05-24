@@ -8,7 +8,8 @@ var myModule = angular.module('AutomationUI',
         'ngDialog',
         'AutomationUI.Common',
         'AutomationUI.Login',
-        'AutomationUI.SelectorType'
+        'AutomationUI.SelectorType',
+        'AutomationUI.ActionType'
     ]);
 
 myModule.config(function($routeProvider, $httpProvider, jwtInterceptorProvider) {
@@ -27,6 +28,12 @@ myModule.config(function($routeProvider, $httpProvider, jwtInterceptorProvider) 
             templateUrl: '/static/ui/app/selectorType/tmpl/selectorTypeHome.html',
             controller: 'SelectorTypeController',
             controllerAs: 'selectorTypeController',
+            requiresLogin: true
+        })
+        .when('/actionType', {
+            templateUrl: '/static/ui/app/actionType/tmpl/actionTypeHome.html',
+            controller: 'ActionTypeController',
+            controllerAs: 'actionTypeController',
             requiresLogin: true
         });
 

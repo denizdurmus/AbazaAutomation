@@ -9,6 +9,6 @@ public interface ActionDao {
 	
 	public Action save(Action action) throws AutomationDaoException;
 	public List<Action> selectAll() throws AutomationDaoException;
-	public List<Action> selectByTestCaseId(long testcaseId) throws AutomationDaoException;
+	public List<Action> selectByTestCaseStepId(long testcaseId) throws AutomationDaoException;
 
 }

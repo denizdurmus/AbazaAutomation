@@ -8,12 +8,20 @@ angular.module('AutomationUI.Common')
                 return $http.get(baseUrl + '/api/selectorType/');
             };
 
+            service.findById = function(selectorTypeId) {
+                return $http.get(baseUrl + '/api/selectorType/' + selectorTypeId);
+            };
+
             service.create = function(selectorType) {
                 return $http.post(baseUrl + '/api/selectorType/', selectorType);
             };
 
             service.delete = function(selectorTypeId) {
                 return $http.delete(baseUrl + '/api/selectorType/' + selectorTypeId);
+            };
+
+            service.update = function(selectorType) {
+                return $http.put(baseUrl + '/api/selectorType/' + selectorType.id + '/', selectorType);
             };
 
         });

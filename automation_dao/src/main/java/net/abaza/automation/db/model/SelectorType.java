@@ -14,16 +14,16 @@ public class SelectorType {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID")
-	private Long id;
+	private Integer id;
 	
 	@Column(name = "NAME", nullable = false)
 	private String name;
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

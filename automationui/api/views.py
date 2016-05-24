@@ -12,25 +12,31 @@ class SelectorTypeViewSet(viewsets.ModelViewSet):
     serializer_class = SelectorTypeSerializer
 
 class ActionTypeViewSet(viewsets.ModelViewSet):
+    authentication_classes = (JSONWebTokenAuthentication, SessionAuthentication,)
     queryset = ActionType.objects.all()
     serializer_class = ActionTypeSerializer
 
 class OutputTypeViewSet(viewsets.ModelViewSet):
+    authentication_classes = (JSONWebTokenAuthentication, SessionAuthentication,)
     queryset = OutputType.objects.all()
     serializer_class = OutputTypeSerializer
 
 class TestCaseViewSet(viewsets.ModelViewSet):
+    authentication_classes = (JSONWebTokenAuthentication, SessionAuthentication,)
     queryset = TestCase.objects.all()
     serializer_class = TestCaseSerializer
 
 class TestCaseStepViewSet(viewsets.ModelViewSet):
+    authentication_classes = (JSONWebTokenAuthentication, SessionAuthentication,)
     queryset = TestCaseStep.objects.all()
     serializer_class = TestCaseStepSerializer
 
 class ActionViewSet(viewsets.ModelViewSet):
+    authentication_classes = (JSONWebTokenAuthentication, SessionAuthentication,)
     queryset = Action.objects.all()
     serializer_class = ActionSerializer
     
 class OutputViewSet(viewsets.ModelViewSet):
+    authentication_classes = (JSONWebTokenAuthentication, SessionAuthentication,)
     queryset = Output.objects.all()
     serializer_class = OutputSerializer

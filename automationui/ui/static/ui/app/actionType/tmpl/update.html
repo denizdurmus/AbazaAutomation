@@ -1,0 +1,25 @@
+<form role="form" ng-submit="actionTypesController.update()" name="actionTypeUpdateForm" novalidate >
+  <div class="form-group" haserrorfor="actionTypeUpdateForm.typeName">
+    <label for="inputSelectorTypeName">Name</label>
+    <input type="text" class="form-control" 
+              name="typeName" 
+              ng-model="actionTypesController.actionTypeToUpdate.name" />
+    <div ng-messages="actionTypeUpdateForm.typeName.$error" showerrorfor="actionTypeUpdateForm.typeName">
+      <span class="help-block" ng-message="required">Action type name is required.</span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input type="submit" class="btn btn-primary" value="Submit">
+  </div>
+</form>
+
+<script type="text/ng-template" id="actionTypeUpdateSuccessDialog">
+    <h1>Success</h1>
+    <p>Action Type is succesfully updated.</p>
+</script>
+
+<script type="text/ng-template" id="actionTypeUpdateErrorDialog">
+    <h1>Error</h1>
+    <p>An error occured while updating action type.</p>
+</script>

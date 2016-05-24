@@ -6,7 +6,11 @@ function SelectorTypeController($rootScope, $scope, SelectorTypeService, ngDialo
         selectorTypeToAdd = {};
 
     controller.create = function() {
-        var selectorTypeToAdd = controller.selectorTypeToAdd;        
+        if ($scope.selectorTypeCreateForm.$invalid) {
+            return false;
+        }
+
+        var selectorTypeToAdd = controller.selectorTypeToAdd;
 
         $scope.closeThisDialog();
 
@@ -22,5 +26,9 @@ function SelectorTypeController($rootScope, $scope, SelectorTypeService, ngDialo
             $rootScope.$broadcast('selectorType.created.error');
             ngDialog.open({template: 'selectorTypeCreateErrorDialog'});
         }
-    };    
+    };
+
+    controller.fieldHasError = function(form, field) {
+        return (field.$invalid && field.$touched) || form.$submitted;
+    };
 }

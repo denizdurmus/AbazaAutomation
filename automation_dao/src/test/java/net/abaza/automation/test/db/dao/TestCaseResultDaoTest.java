@@ -4,12 +4,6 @@ package net.abaza.automation.test.db.dao;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
-import net.abaza.automation.db.AutomationDaoException;
-import net.abaza.automation.db.DatabaseConfig;
-import net.abaza.automation.db.dao.TestCaseResultDao;
-import net.abaza.automation.db.model.TestCase;
-import net.abaza.automation.db.model.TestCaseResult;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,8 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import net.abaza.automation.db.AutomationDaoException;
+import net.abaza.automation.db.dao.TestCaseResultDao;
+import net.abaza.automation.db.model.TestCase;
+import net.abaza.automation.db.model.TestCaseResult;
+import net.abaza.automation.test.db.config.DatabaseTestConfig;
+
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {DatabaseConfig.class})
+@ContextConfiguration(classes = {DatabaseTestConfig.class})
 public class TestCaseResultDaoTest {
 	@Autowired
 	private TestCaseResultDao testCaseResultDao;

@@ -34,10 +34,10 @@ public class OutputDaoImpl implements OutputDao {
 	}
 
 	@Override
-	public List<Output> selectByTestCaseId(long testcaseId)
+	public List<Output> selectByTestCaseStepId(long testcaseId)
 			throws AutomationDaoException {
 		try {
-			return outputRepository.selectByTestCaseId(testcaseId);
+			return outputRepository.selectByTestCaseStepId(testcaseId);
 		} catch (Exception e) {
 			throw new AutomationDaoException(e);
 		}

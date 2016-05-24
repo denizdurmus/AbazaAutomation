@@ -2,6 +2,8 @@ angular.module('AutomationUI.Login')
     .controller('LoginController', LoginController);
 
 function LoginController($rootScope, $scope, $location, store, AuthenticationService) {
+    var controller = this;
+
     $scope.signin = function() {
         if (!$scope.loginForm.$valid) {
             return false;
@@ -43,5 +45,9 @@ function LoginController($rootScope, $scope, $location, store, AuthenticationSer
 
     $scope.logout = function() {
         AuthenticationService.logout();
+    };
+
+    controller.fieldHasError = function(form, field) {
+        return (field.$invalid && field.$touched) || form.$submitted;
     };
 }

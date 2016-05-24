@@ -34,9 +34,9 @@ public class ActionDaoImpl implements ActionDao {
 	}
 
 	@Override
-	public List<Action> selectByTestCaseId(long testcaseId) throws AutomationDaoException {
+	public List<Action> selectByTestCaseStepId(long testcaseId) throws AutomationDaoException {
 		try {
-			return actionRepository.selectByTestCaseId(testcaseId);
+			return actionRepository.selectByTestCaseStepId(testcaseId);
 		} catch (Exception e) {
 			throw new AutomationDaoException();
 		}

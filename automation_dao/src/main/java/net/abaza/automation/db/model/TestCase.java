@@ -28,6 +28,9 @@ public class TestCase {
 	@Column(name = "STATUS", nullable = false)
 	private char status;
 	
+	@Column(name = "DEFINITION", nullable = false)
+	private String definiton;
+	
 	/*
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinTable(name = "T_ACTION", joinColumns = { @JoinColumn(name = "ID") }, 
@@ -79,7 +82,15 @@ public class TestCase {
 
 	public void setRunOrder(int order) {
 		this.runOrder = order;
-	}	
+	}
+	
+	public String getDefiniton() {
+		return definiton;
+	}
+
+	public void setDefiniton(String definiton) {
+		this.definiton = definiton;
+	}
 	
 	/*
 	public Set<Action> getActionList() {

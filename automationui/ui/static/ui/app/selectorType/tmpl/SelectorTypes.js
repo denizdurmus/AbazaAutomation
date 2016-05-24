@@ -7,7 +7,7 @@ function SelectorTypes() {
         controllerAs: 'selectorTypesController',
         restrict: 'E',
         scope: {
-            posts: '='
+            selectortypes: '='
         },
         templateUrl: '/static/ui/app/selectorType/tmpl/selectorTypes.html'
     };

@@ -3,19 +3,35 @@
   		<tr>
   			<td>Id</td>
   			<td>Name</td>
-        <td>Delete</td>
+        <td>Edit</td>
   		</tr>  		
   	</thead>
   	<tbody>
   		<tr ng-repeat="selectorType in selectorTypesController.selectorTypes">
   			<td>{{selectorType.id}}</td>
   			<td>{{selectorType.name}}</td>
-        <td><a class="btn btn-primary btn-fab btn-raised"
-                href="javascript:void(0)"
-                ng-click="selectorTypesController.delete(selectorType.id)">Delete</a>
+        <td>
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default"
+              ng-click="selectorTypesController.showUpdate(selectorType.id)">
+              <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="btn btn-default"
+              ng-click="selectorTypesController.delete(selectorType.id)">
+              <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+            </button>
+          </div>
   		<tr>
   	</tbody>
 </table>
+
+<script type="text/ng-template" id="selectorTypeDeleteConfirmDialog">
+    <h1>Confirm</h1>
+    <p>Are you sure to delete this selector type?</p>
+
+    <button type="button" class="btn btn-default" ng-click="closeThisDialog()">Cancel</button>
+    <button type="button" class="btn btn-default" ng-click="confirm()">Confirm</button>
+</script>
 
 <script type="text/ng-template" id="selectorTypeDeleteSuccessDialog">
     <h1>Success</h1>

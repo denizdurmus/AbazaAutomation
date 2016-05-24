@@ -1,0 +1,25 @@
+<form role="form" ng-submit="selectorTypesController.update()" name="selectorTypeUpdateForm" novalidate >
+  <div class="form-group" haserrorfor="selectorTypeUpdateForm.typeName">
+    <label for="inputSelectorTypeName">Name</label>
+    <input type="text" class="form-control" 
+              name="typeName" 
+              ng-model="selectorTypesController.selectorTypeToUpdate.name" />
+    <div ng-messages="selectorTypeUpdateForm.typeName.$error" showerrorfor="selectorTypeUpdateForm.typeName">
+      <span class="help-block" ng-message="required">Selector type name is required.</span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input type="submit" class="btn btn-primary" value="Submit">
+  </div>
+</form>
+
+<script type="text/ng-template" id="selectorTypeUpdateSuccessDialog">
+    <h1>Success</h1>
+    <p>Selector Type is succesfully updated.</p>
+</script>
+
+<script type="text/ng-template" id="selectorTypeUpdateErrorDialog">
+    <h1>Error</h1>
+    <p>An error occured while updating selector type.</p>
+</script>

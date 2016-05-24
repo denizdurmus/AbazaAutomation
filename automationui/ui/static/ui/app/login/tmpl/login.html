@@ -1,21 +1,24 @@
 <div class="col-md-4 col-md-offset-4">
     <h2 class="form-signin-heading">Please sign in</h2>
     <form name="loginForm" novalidate ng-submit="signin()">
-        <div class="form-group">
+        <div class="form-group" haserrorfor="loginForm.inputUsername">
             <label for="inputUsername" class="sr-only">Username</label>
             <input type="text" name="inputUsername" class="form-control" 
                 placeholder="User name" required autofocus
                 ng-model="username">
-            <div ng-show="loginForm.$submitted || loginForm.inputUsername.$touched">
-                <span ng-show="loginForm.inputUsername.$error.required">Username cannot be empty.</span>
+            <div showerrorfor="loginForm.inputUsername" ng-messages="loginForm.inputUsername.$error">
+                <span class="help-block" ng-message="required">Username cannot be empty.</span>
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" haserrorfor="loginForm.inputPassword">
             <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" id="inputPassword" class="form-control"
+            <input type="password" name="inputPassword" class="form-control"
                 placeholder="Password" required ng-minlength="5"
                 ng-model="password">
+            <div showerrorfor="loginForm.inputPassword" ng-messages="loginForm.inputPassword.$error">
+                <span class="help-block" ng-message="required">Password cannot be empty.</span>
+            </div>
         </div>
 
         <div class="checkbox">
