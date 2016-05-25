@@ -3,6 +3,8 @@
   		<tr>
   			<td>Id</td>
   			<td>Name</td>
+        <td>Has Element</td>
+        <td>Has Input</td>
         <td>Edit</td>
   		</tr>  		
   	</thead>
@@ -10,6 +12,10 @@
   		<tr ng-repeat="actionType in actionTypesController.actionTypes">
   			<td>{{actionType.id}}</td>
   			<td>{{actionType.name}}</td>
+        <td><input type="checkbox" ng-model="actionType.hasElement"
+          ng-true-value="'1'" ng-false-value="'0'" ng-disabled="true"></td>
+        <td><input type="checkbox" ng-model="actionType.hasInput"
+          ng-true-value="'1'" ng-false-value="'0'" ng-disabled="true"></td>
         <td>
           <div class="btn-group" role="group">
             <button type="button" class="btn btn-default"

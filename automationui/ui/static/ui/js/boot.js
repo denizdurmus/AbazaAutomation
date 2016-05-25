@@ -5,7 +5,6 @@ head.load(
     { file: '/static/ui/js/angular-jwt.min.js' },
     { file: '/static/ui/js/angular-animate.min.js' },
     { file: '/static/ui/js/angular-messages.min.js' },
-    { file: '/static/ui/js/angular-confirm.min.js' },
     { file: '/static/ui/js/sugar-1.4.1.min.js' },
     { file: '/static/ui/js/jquery-2.2.4.min.js' },
     { file: '/static/ui/3rdparty/datatable/js/jquery.dataTables.min.js' },

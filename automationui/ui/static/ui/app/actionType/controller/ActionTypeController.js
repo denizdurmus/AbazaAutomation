@@ -2,8 +2,9 @@ angular.module('AutomationUI.ActionType')
     .controller('ActionTypeController', ActionTypeController);
 
 function ActionTypeController($rootScope, $scope, ActionTypeService, ngDialog) {
-    var controller = this,
-        actionTypeToAdd = {};
+    var controller = this;
+
+    controller.actionTypeToAdd = {hasElement: '0', hasInput: '0'};
 
     controller.create = function() {
         if ($scope.actionTypeCreateForm.$invalid) {
@@ -25,6 +26,12 @@ function ActionTypeController($rootScope, $scope, ActionTypeService, ngDialog) {
         function createActionTypeErrorFn(data, status, headers, config) {
             $rootScope.$broadcast('actionType.created.error');
             ngDialog.open({template: 'actionTypeCreateErrorDialog'});
+        }
+    };
+
+    controller.actionTypeToAddHasElementChanged = function() {
+        if (controller.actionTypeToAdd.hasElement === '0') {
+            controller.actionTypeToAdd.hasInput = '0';
         }
     };
 }

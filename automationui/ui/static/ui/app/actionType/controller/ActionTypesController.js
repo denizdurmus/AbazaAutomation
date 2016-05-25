@@ -104,4 +104,10 @@ function ActionTypesController($rootScope, $scope, ActionTypeService, ngDialog) 
         }
     }
 
+    controller.actionTypeToUpdateHasElementChanged = function() {
+        if (controller.actionTypeToUpdate.hasElement === '0') {
+            controller.actionTypeToUpdate.hasInput = '0';
+        }
+    };
+
 }
