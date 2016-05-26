@@ -1,3 +1,5 @@
+<h2>Update Action Type</h2>
+
 <form role="form" ng-submit="actionTypesController.update()" name="actionTypeUpdateForm" novalidate >
   <div class="form-group" haserrorfor="actionTypeUpdateForm.typeName">
     <label for="inputActionTypeName">Name</label>
@@ -10,25 +12,21 @@
   </div>
 
   <div class="form-group">
-    <div class="checkbox">
-      <label>
-        <input id="inputActionHasElement" type="checkbox" name="hasElement"
-          ng-model="actionTypesController.actionTypeToUpdate.hasElement"
-          ng-true-value="'1'" ng-false-value="'0'"
-          ng-change="actionTypesController.actionTypeToUpdateHasElementChanged()">Has Element
-      </label>
-    </div>
+    <label for="inputActionHasElement">Has Element</label>
+    <input id="inputActionHasElement" type="checkbox" name="hasElement" bs-switch
+      ng-model="actionTypesController.actionTypeToUpdate.hasElement"
+      switch-on-text="YES" switch-off-text="NO"
+      ng-true-value="'1'" ng-false-value="'0'"
+      switch-change="actionTypesController.actionTypeToUpdateHasElementChanged()">
   </div>
 
   <div class="form-group">
-    <div class="checkbox">
-      <label>
-        <input id="inputActionHasInput" type="checkbox" name="hasInput"
-          ng-model="actionTypesController.actionTypeToUpdate.hasInput"
-          ng-true-value="'1'" ng-false-value="'0'"
-          ng-disabled="actionTypesController.actionTypeToUpdate.hasElement === '0'">Has Input
-      </label>
-    </div>
+    <label for="inputActionHasInput">Has Input</label>
+    <input id="inputActionHasInput" type="checkbox" name="hasInput" bs-switch
+      ng-model="actionTypesController.actionTypeToUpdate.hasInput"
+      switch-on-text="YES" switch-off-text="NO"
+      ng-true-value="'1'" ng-false-value="'0'"
+      switch-active="{{actionTypesController.actionTypeToAdd.hasElement !== '0'}}">
   </div>
 
   <div class="form-group">

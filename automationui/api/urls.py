@@ -1,6 +1,11 @@
 from django.conf.urls import url, include
 from rest_framework import routers
 from . import views
+from .views import ActionTypeViewSet
+
+actionTypeDataTableQuery = views.ActionTypeViewSet.as_view({
+	'get': 'dataTableQuery'
+})
 
 router = routers.DefaultRouter()
 router.register(r'selectorType', views.SelectorTypeViewSet)

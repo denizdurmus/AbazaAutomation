@@ -1,9 +1,9 @@
-head.load(    
+head.load(
     { file: '/static/ui/js/jquery-2.1.4.min.js' },
-    { file: '/static/ui/3rdparty/datatable/js/jquery.dataTables.min.js' },
-    { file: '/static/ui/3rdparty/datatable/js/dataTables.bootstrap.min.js' },
+    { file: '/static/ui/3rdparty/datatables/js/jquery.dataTables.min.js' },
+    { file: '/static/ui/3rdparty/datatables/js/dataTables.bootstrap.min.js' },
     { file: '/static/ui/3rdparty/bootstrap/js/bootstrap.min.js' },
-    
+    { file: '/static/ui/3rdparty/bootstrap-switch/js/bootstrap-switch.min.js' },
 
     { file: '/static/ui/js/angular.min.js' },
     { file: '/static/ui/js/angular-route.min.js' },
@@ -12,7 +12,9 @@ head.load(
     { file: '/static/ui/js/angular-animate.min.js' },
     { file: '/static/ui/js/angular-messages.min.js' },
     { file: '/static/ui/js/sugar-1.4.1.min.js' },
+    { file: '/static/ui/js/angular-bootstrap-switch.min.js' },
     { file: '/static/ui/3rdparty/ngDialog/js/ngDialog.min.js' },
+    { file: '/static/ui/3rdparty/angular-datatables/js/angular-datatables.min.js' },
 
     { file: '/static/ui/app/common/Common.js' },
     { file: '/static/ui/app/common/directive/FieldErrorMessages.js' },

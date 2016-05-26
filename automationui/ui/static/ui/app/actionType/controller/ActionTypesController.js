@@ -1,16 +1,28 @@
 angular.module('AutomationUI.ActionType')
     .controller('ActionTypesController', ActionTypesController);
 
-function ActionTypesController($rootScope, $scope, ActionTypeService, ngDialog) {
+function ActionTypesController($rootScope, $scope, ActionTypeService, ngDialog, DTOptionsBuilder, DTColumnBuilder) {
     var controller = this;
 
     controller.actionTypes = [];
     controller.actionTypeToUpdate = null;
     controller.actionTypeUpdateDialog = null;
-    controller.queryAll = queryAll;
     controller.delete = deleteActionType;
     controller.showUpdate = showUpdate;
     controller.update = update;
+
+    controller.dtOptions = DTOptionsBuilder.newOptions()
+        .withOption('ajax', '/api/actionType/dataTableQuery')
+        .withDataProp('results')
+        .withOption('processing', true)
+        .withOption('serverSide', true)
+        .withOption('ordering', false)
+        .withPaginationType('full_numbers');
+
+    controller.dtColumns = [
+        DTColumnBuilder.newColumn('id').withTitle('ID'),
+        DTColumnBuilder.newColumn('name').withTitle('Name')
+    ];
 
     activate();
 
@@ -38,20 +50,6 @@ function ActionTypesController($rootScope, $scope, ActionTypeService, ngDialog) 
         $scope.$on('actionType.deleted.error', function() {
 
         });
-
-        controller.queryAll();
-    }
-
-    function queryAll() {
-        ActionTypeService.findAll().then(actionTypeSuccessFn, actionTypeErrorFn);
-
-        function actionTypeSuccessFn(data, status, headers, config) {
-            controller.actionTypes = data.data.results;
-        }
-
-        function actionTypeErrorFn(data, status, headers, config) {
-
-        }
     }
 
     function deleteActionType(actionTypeId) {

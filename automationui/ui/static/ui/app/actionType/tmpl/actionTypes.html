@@ -1,34 +1,4 @@
-<table class="table table-hover">
-  	<thead>
-  		<tr>
-  			<td>Id</td>
-  			<td>Name</td>
-        <td>Has Element</td>
-        <td>Has Input</td>
-        <td>Edit</td>
-  		</tr>  		
-  	</thead>
-  	<tbody>
-  		<tr ng-repeat="actionType in actionTypesController.actionTypes">
-  			<td>{{actionType.id}}</td>
-  			<td>{{actionType.name}}</td>
-        <td><input type="checkbox" ng-model="actionType.hasElement"
-          ng-true-value="'1'" ng-false-value="'0'" ng-disabled="true"></td>
-        <td><input type="checkbox" ng-model="actionType.hasInput"
-          ng-true-value="'1'" ng-false-value="'0'" ng-disabled="true"></td>
-        <td>
-          <div class="btn-group" role="group">
-            <button type="button" class="btn btn-default"
-              ng-click="actionTypesController.showUpdate(actionType.id)">
-              <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-            </button>
-            <button type="button" class="btn btn-default"
-              ng-click="actionTypesController.delete(actionType.id)">
-              <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-            </button>
-          </div>
-  		<tr>
-  	</tbody>
+<table  datatable="" dt-options="actionTypesController.dtOptions" dt-columns="actionTypesController.dtColumns" class="row-border hover">
 </table>
 
 <script type="text/ng-template" id="actionTypeDeleteConfirmDialog">
