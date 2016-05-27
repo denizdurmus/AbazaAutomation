@@ -3,10 +3,6 @@ from rest_framework import routers
 from . import views
 from .views import ActionTypeViewSet
 
-actionTypeDataTableQuery = views.ActionTypeViewSet.as_view({
-	'get': 'dataTableQuery'
-})
-
 router = routers.DefaultRouter()
 router.register(r'selectorType', views.SelectorTypeViewSet)
 router.register(r'actionType', views.ActionTypeViewSet)
@@ -18,5 +14,6 @@ router.register(r'output', views.OutputViewSet)
 
 app_name = 'api'
 urlpatterns = [
-    url(r'^', include(router.urls)),
+	url(r'^actionType/dataTableQuery/$', views.ActionTypeDataTableQuery.as_view(), name='actionType-dataTableQuery'),
+    url(r'^', include(router.urls)),	
 ]

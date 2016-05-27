@@ -13,16 +13,19 @@ class SelectorTypeViewSet(viewsets.ModelViewSet):
     queryset = SelectorType.objects.all()
     serializer_class = SelectorTypeSerializer    
 
-class ActionTypeViewSet(viewsets.ModelViewSet, BaseDatatableView):
+class ActionTypeViewSet(viewsets.ModelViewSet):
     authentication_classes = (JSONWebTokenAuthentication, SessionAuthentication,)
     queryset = ActionType.objects.all()
     serializer_class = ActionTypeSerializer
 
-    @list_route()
-    def dataTableQuery(self, request, *args, **kwargs):
-        print(request.GET.get(u'length', None))
-        serializer = self.get_serializer(ActionType.objects.all(), many=True)
-        return Response(serializer.data)
+class ActionTypeDataTableQuery(BaseDatatableView):
+    authentication_classes = (JSONWebTokenAuthentication, SessionAuthentication,)
+    model = ActionType
+    columns = ['id', 'name', 'hasElement', 'hasInput']
+
+    def prepare_results(self, qs):
+        serializer = ActionTypeSerializer(qs, many=True)
+        return serializer.data
 
 class OutputTypeViewSet(viewsets.ModelViewSet):
     authentication_classes = (JSONWebTokenAuthentication, SessionAuthentication,)

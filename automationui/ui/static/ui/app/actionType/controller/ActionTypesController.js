@@ -1,34 +1,68 @@
 angular.module('AutomationUI.ActionType')
     .controller('ActionTypesController', ActionTypesController);
 
-function ActionTypesController($rootScope, $scope, ActionTypeService, ngDialog, DTOptionsBuilder, DTColumnBuilder) {
+function ActionTypesController($compile, $rootScope, $scope, ActionTypeService, ngDialog, DTOptionsBuilder,
+    DTColumnBuilder, DTColumnDefBuilder) {
     var controller = this;
 
-    controller.actionTypes = [];
     controller.actionTypeToUpdate = null;
     controller.actionTypeUpdateDialog = null;
     controller.delete = deleteActionType;
     controller.showUpdate = showUpdate;
     controller.update = update;
 
+    controller.dtInstance = {};
+    controller.reloadData = reloadData;
+
     controller.dtOptions = DTOptionsBuilder.newOptions()
-        .withOption('ajax', '/api/actionType/dataTableQuery')
-        .withDataProp('results')
+        .withOption('ajax', '/api/actionType/dataTableQuery/')
+        .withDataProp('data')
         .withOption('processing', true)
         .withOption('serverSide', true)
         .withOption('ordering', false)
+        .withOption('createdRow', function(row, data, dataIndex) {
+            $compile(angular.element(row).contents())($scope);
+        })
         .withPaginationType('full_numbers');
 
     controller.dtColumns = [
         DTColumnBuilder.newColumn('id').withTitle('ID'),
-        DTColumnBuilder.newColumn('name').withTitle('Name')
+        DTColumnBuilder.newColumn('name').withTitle('Name'),
+        DTColumnBuilder.newColumn('hasElement').withTitle('Has Element').renderWith(function(data, type, full) {
+            var ngModel = 'hasElement_' + full.id,
+                initStr = ngModel + '=\'' + data + '\'';
+
+            return '<input type="checkbox" ng-model="' + ngModel + '" ng-init="' + initStr + '" ' +
+                        'bs-switch switch-on-text="YES" switch-off-text="NO" switch-active="false" ' +
+                        'ng-true-value="\'1\'" ng-false-value="\'0\'">';
+            }),
+        DTColumnBuilder.newColumn('hasInput').withTitle('Has Input').renderWith(function(data, type, full) {
+            var ngModel = 'hasInput_' + full.id,
+                initStr = ngModel + '=\'' + data + '\'';
+
+            return '<input type="checkbox" ng-model="' + ngModel + '" ng-init="' + initStr + '" ' +
+                        'bs-switch switch-on-text="YES" switch-off-text="NO" switch-active="false" ' +
+                        'ng-true-value="\'1\'" ng-false-value="\'0\'">';
+            }),
+        DTColumnDefBuilder.newColumnDef(4).withTitle('Edit').renderWith(function(data, type, full) {
+            return '<div class="btn-group" role="group"> ' +
+                        '<button type="button" class="btn btn-default" ' +
+                            'ng-click="actionTypesController.showUpdate(' + full.id + ')"> ' +
+                            '<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> ' +
+                        '</button> ' +
+                        '<button type="button" class="btn btn-default" ' +
+                            'ng-click="actionTypesController.delete(' + full.id + ')"> ' +
+                            '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> ' +
+                        '</button> ' +
+                    '</div>';
+            })
     ];
 
     activate();
 
     function activate() {
         $scope.$on('actionType.created', function(event, actionType) {
-            controller.queryAll();
+            controller.reloadData();
         });
 
         $scope.$on('actionType.created.error', function() {
@@ -36,7 +70,7 @@ function ActionTypesController($rootScope, $scope, ActionTypeService, ngDialog, 
         });
 
         $scope.$on('actionType.updated', function() {
-           controller.queryAll();
+           controller.reloadData();
         });
 
         $scope.$on('actionType.updated.error', function() {
@@ -44,12 +78,16 @@ function ActionTypesController($rootScope, $scope, ActionTypeService, ngDialog, 
         });
 
         $scope.$on('actionType.deleted', function() {
-            controller.queryAll();
+            controller.reloadData();
         });
 
         $scope.$on('actionType.deleted.error', function() {
 
         });
+    }
+
+    function reloadData() {
+        controller.dtInstance.reloadData(false);
     }
 
     function deleteActionType(actionTypeId) {
