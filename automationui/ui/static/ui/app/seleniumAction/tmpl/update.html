@@ -1,0 +1,48 @@
+<h2>Update Selenium Action</h2>
+
+<form role="form" ng-submit="seleniumActionsController.update()" name="seleniumActionUpdateForm" novalidate >
+  <div class="form-group" haserrorfor="seleniumActionUpdateForm.actionName">
+    <label for="inputSeleniumActionName">Name</label>
+    
+    <input type="text" class="form-control" name="actionName"
+      id="inputSeleniumActionName" required 
+      ng-model="seleniumActionController.seleniumActionToAdd.name" />
+
+    <div ng-messages="seleniumActionUpdateForm.actionName.$error" showerrorfor="seleniumActionUpdateForm.actionName">
+      <span class="help-block" ng-message="required">Selenium action name is required.</span>
+    </div>
+  </div>  
+
+  <div class="form-group">
+    <label for="inputDescription">Description</label>
+    
+    <input type="text" class="form-control" name="description"
+      id="inputDescription" ng-model="seleniumActionController.seleniumActionToAdd.description" />
+  </div>
+
+  <div class="form-group" haserrorfor="seleniumActionUpdateForm.javaMethod">
+    <label for="inputJavaMethod">Name</label>
+    
+    <input type="text" class="form-control" name="javaMethod"
+      id="inputJavaMethod" required 
+      ng-model="seleniumActionController.seleniumActionToAdd.javaMethod" />
+
+    <div ng-messages="seleniumActionUpdateForm.javaMethod.$error" showerrorfor="seleniumActionUpdateForm.javaMethod">
+      <span class="help-block" ng-message="required">Java Method is required.</span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input type="submit" class="btn btn-primary" value="Submit">
+  </div>
+</form>
+
+<script type="text/ng-template" id="actionTypeUpdateSuccessDialog">
+    <h1>Success</h1>
+    <p>Selenium Action is succesfully updated.</p>
+</script>
+
+<script type="text/ng-template" id="actionTypeUpdateErrorDialog">
+    <h1>Error</h1>
+    <p>An error occured while updating selenium action.</p>
+</script>

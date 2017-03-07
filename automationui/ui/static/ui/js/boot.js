@@ -22,6 +22,7 @@ head.load(
     { file: '/static/ui/app/common/service/AuthenticationService.js' },
     { file: '/static/ui/app/common/service/SelectorTypeService.js' },
     { file: '/static/ui/app/common/service/ActionTypeService.js' },
+    { file: '/static/ui/app/common/service/SeleniumActionService.js' },
     { file: '/static/ui/app/common/controller/MainController.js' },
     { file: '/static/ui/app/login/Login.js' },
     { file: '/static/ui/app/login/controller/LoginController.js' },
@@ -33,5 +34,9 @@ head.load(
     { file: '/static/ui/app/actionType/controller/ActionTypeController.js' },
     { file: '/static/ui/app/actionType/controller/ActionTypesController.js' },
     { file: '/static/ui/app/actionType/tmpl/ActionTypes.js' },
+    { file: '/static/ui/app/seleniumAction/SeleniumAction.js' },
+    { file: '/static/ui/app/seleniumAction/controller/SeleniumActionController.js' },
+    { file: '/static/ui/app/seleniumAction/controller/SeleniumActionsController.js' },
+    { file: '/static/ui/app/seleniumAction/tmpl/SeleniumActions.js' },
     { file: '/static/ui/app/AutomationUI.js' }
 );

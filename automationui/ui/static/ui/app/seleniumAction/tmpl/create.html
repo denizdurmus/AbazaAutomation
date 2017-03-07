@@ -1,0 +1,48 @@
+<h2>Create New Action Type</h2>
+
+<form role="form" ng-submit="seleniumActionController.create()" name="seleniumActionCreateForm" novalidate>
+  <div class="form-group" haserrorfor="seleniumActionCreateForm.actionName">
+    <label for="inputSeleniumActionName">Name</label>
+    
+    <input type="text" class="form-control" name="actionName"
+      id="inputSeleniumActionName" required 
+      ng-model="seleniumActionController.seleniumActionToAdd.name" />
+
+    <div ng-messages="seleniumActionCreateForm.actionName.$error" showerrorfor="seleniumActionCreateForm.actionName">
+      <span class="help-block" ng-message="required">Selenium action name is required.</span>
+    </div>
+  </div>  
+
+  <div class="form-group">
+    <label for="inputDescription">Description</label>
+    
+    <input type="text" class="form-control" name="description"
+      id="inputDescription" ng-model="seleniumActionController.seleniumActionToAdd.description" />
+  </div>
+
+  <div class="form-group" haserrorfor="seleniumActionCreateForm.javaMethod">
+    <label for="inputJavaMethod">Name</label>
+    
+    <input type="text" class="form-control" name="javaMethod"
+      id="inputJavaMethod" required 
+      ng-model="seleniumActionController.seleniumActionToAdd.javaMethod" />
+
+    <div ng-messages="seleniumActionCreateForm.javaMethod.$error" showerrorfor="seleniumActionCreateForm.javaMethod">
+      <span class="help-block" ng-message="required">Java Method is required.</span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input type="submit" class="btn btn-primary" value="Submit">
+  </div>
+</form>
+
+<script type="text/ng-template" id="seleniumActionCreateSuccessDialog">
+    <h1>Success</h1>
+    <p>Selenium Action is succesfully saved.</p>
+</script>
+
+<script type="text/ng-template" id="seleniumActionCreateErrorDialog">
+    <h1>Error</h1>
+    <p>An error occured while saving selenium action.</p>
+</script>

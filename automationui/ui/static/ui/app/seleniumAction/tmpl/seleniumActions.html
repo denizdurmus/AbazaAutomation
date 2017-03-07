@@ -1,0 +1,20 @@
+<table  datatable="" dt-options="seleniumActionsController.dtOptions" dt-columns="seleniumActionsController.dtColumns" dt-instance="seleniumActionsController.dtInstance" class="row-border hover">
+</table>
+
+<script type="text/ng-template" id="seleniumActionDeleteConfirmDialog">
+    <h1>Confirm</h1>
+    <p>Are you sure to delete this action type?</p>
+
+    <button type="button" class="btn btn-default" ng-click="closeThisDialog()">Cancel</button>
+    <button type="button" class="btn btn-default" ng-click="confirm()">Confirm</button>
+</script>
+
+<script type="text/ng-template" id="seleniumActionDeleteSuccessDialog">
+    <h1>Success</h1>
+    <p>Selenium Action is deleted successfully.</p>
+</script>
+
+<script type="text/ng-template" id="seleniumActionDeleteErrorDialog">
+    <h1>Error</h1>
+    <p>An error occured while deleting selenium action.</p>
+</script>

@@ -14,7 +14,9 @@
   </div>
 
   <div class="form-group">
-    <label for="inputActionHasElement">Has Element</label>
+    <div>
+      <label for="inputActionHasElement">Has Element</label>
+    </div>    
     <input id="inputActionHasElement" type="checkbox" name="hasElement" bs-switch
       ng-model="actionTypeController.actionTypeToAdd.hasElement"
       switch-on-text="YES" switch-off-text="NO"
@@ -23,12 +25,29 @@
   </div>
 
   <div class="form-group">
-    <label for="inputActionHasInput">Has Input</label>
+    <div>
+      <label for="inputActionHasInput">Has Input</label>
+    </div>
     <input id="inputActionHasInput" type="checkbox" name="hasInput" bs-switch
       ng-model="actionTypeController.actionTypeToAdd.hasInput"
       switch-on-text="YES" switch-off-text="NO"
       ng-true-value="'1'" ng-false-value="'0'"
       switch-active="{{actionTypeController.actionTypeToAdd.hasElement !== '0'}}">
+  </div>
+
+  <div class="form-group" haserrorfor="actionTypeCreateForm.seleniumAction">
+    <label for="selectSeleniumAction">Selenium Action</label>
+    
+    <select class="form-control" name="seleniumAction"
+      id="selectSeleniumAction" required 
+      ng-model="actionTypeController.actionTypeToAdd.seleniumAction_id">
+      <option value="">Select action...</option>
+      <option ng-repeat="sa in actionTypeController.getSeleniumActions()" value="{{sa.id}}">{{sa.name}}</option>
+    </select>
+
+    <div ng-messages="actionTypeCreateForm.seleniumAction.$error" showerrorfor="actionTypeCreateForm.seleniumAction">
+      <span class="help-block" ng-message="required">Selenium action is required.</span>
+    </div>
   </div>
 
   <div class="form-group">

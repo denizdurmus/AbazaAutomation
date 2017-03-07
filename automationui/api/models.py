@@ -3,10 +3,16 @@ from django.db import models
 class SelectorType(models.Model):
     name = models.CharField(max_length=64)
 
+class SeleniumAction(models.Model):
+    name = models.CharField(max_length=64)
+    description = models.CharField(max_length=2048)
+    javaMethod = models.CharField(max_length=256)
+
 class ActionType(models.Model):
     name = models.CharField(max_length=64)
     hasInput = models.CharField(max_length=1)
     hasElement = models.CharField(max_length=1)
+    seleniumAction = models.ForeignKey(SeleniumAction)
 
 class OutputType(models.Model):
     name = models.CharField(max_length=64)

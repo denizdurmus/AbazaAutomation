@@ -44,13 +44,16 @@ function ActionTypesController($compile, $rootScope, $scope, ActionTypeService, 
                         'bs-switch switch-on-text="YES" switch-off-text="NO" switch-active="false" ' +
                         'ng-true-value="\'1\'" ng-false-value="\'0\'">';
             }),
-        DTColumnDefBuilder.newColumnDef(4).withTitle('Edit').renderWith(function(data, type, full) {
+        DTColumnBuilder.newColumn(4).withTitle('Selenium Action').renderWith(function(data, type, full) {
+            return full.seleniumAction.name;
+        }),
+        DTColumnDefBuilder.newColumnDef(5).withTitle('Edit').renderWith(function(data, type, full) {
             return '<div class="btn-group" role="group"> ' +
-                        '<button type="button" class="btn btn-default" ' +
+                        '<button type="button" class="btn btn-default" title="Update" ' +                            
                             'ng-click="actionTypesController.showUpdate(' + full.id + ')"> ' +
                             '<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> ' +
                         '</button> ' +
-                        '<button type="button" class="btn btn-default" ' +
+                        '<button type="button" class="btn btn-default" title="Delete" ' +
                             'ng-click="actionTypesController.delete(' + full.id + ')"> ' +
                             '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> ' +
                         '</button> ' +
@@ -62,27 +65,30 @@ function ActionTypesController($compile, $rootScope, $scope, ActionTypeService, 
 
     function activate() {
         $scope.$on('actionType.created', function(event, actionType) {
+            ngDialog.open({template: 'actionTypeCreateSuccessDialog'});
             controller.reloadData();
         });
 
         $scope.$on('actionType.created.error', function() {
-
+            ngDialog.open({template: 'actionTypeCreateErrorDialog'});
         });
 
         $scope.$on('actionType.updated', function() {
+           ngDialog.open({template: 'actionTypeUpdateSuccessDialog'});
            controller.reloadData();
         });
 
         $scope.$on('actionType.updated.error', function() {
-
+            ngDialog.open({template: 'actionTypeUpdateErrorDialog'});
         });
 
         $scope.$on('actionType.deleted', function() {
+            ngDialog.open({template: 'actionTypeDeleteSuccessDialog'});
             controller.reloadData();
         });
 
         $scope.$on('actionType.deleted.error', function() {
-
+            ngDialog.open({template: 'actionTypeDeleteSuccessDialog'});
         });
     }
 
@@ -96,8 +102,7 @@ function ActionTypesController($compile, $rootScope, $scope, ActionTypeService, 
             ActionTypeService.delete(actionTypeId).then(deleteActionTypeSuccessFn, deleteActionTypeErrorFn);
         });
 
-        function deleteActionTypeSuccessFn(data, status, headers, config) {
-            ngDialog.open({template: 'actionTypeDeleteSuccessDialog'});
+        function deleteActionTypeSuccessFn(data, status, headers, config) {            
             $rootScope.$broadcast('actionType.deleted');
         }
 
@@ -130,12 +135,10 @@ function ActionTypesController($compile, $rootScope, $scope, ActionTypeService, 
         ngDialog.close(controller.actionTypeUpdateDialog.id);
 
         function updateActionTypeSuccessFn(data, status, headers, config) {
-            ngDialog.open({template: 'actionTypeUpdateSuccessDialog'});
             $rootScope.$broadcast('actionType.updated');
         }
 
         function updateActionTypeErrorFn(data, status, headers, config) {
-            ngDialog.open({template: 'actionTypeUpdateErrorDialog'});
             $rootScope.$broadcast('actionType.updated.error');
         }
     }

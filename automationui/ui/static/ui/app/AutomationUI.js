@@ -11,7 +11,8 @@ var myModule = angular.module('AutomationUI',
         'AutomationUI.Common',
         'AutomationUI.Login',
         'AutomationUI.SelectorType',
-        'AutomationUI.ActionType'
+        'AutomationUI.ActionType',
+        'AutomationUI.SeleniumAction'
     ]);
 
 myModule.config(function($routeProvider, $httpProvider, jwtInterceptorProvider) {
@@ -36,6 +37,12 @@ myModule.config(function($routeProvider, $httpProvider, jwtInterceptorProvider) 
             templateUrl: '/static/ui/app/actionType/tmpl/actionTypeHome.html',
             controller: 'ActionTypeController',
             controllerAs: 'actionTypeController',
+            requiresLogin: true
+        })
+        .when('/seleniumAction', {
+            templateUrl: '/static/ui/app/seleniumAction/tmpl/seleniumActionHome.html',
+            controller: 'SeleniumActionController',
+            controllerAs: 'seleniumActionController',
             requiresLogin: true
         });
 
